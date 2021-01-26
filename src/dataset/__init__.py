@@ -1,19 +1,21 @@
 from .atari import Atari
 from .obj3d import Obj3D
 from torch.utils.data import DataLoader
+import os
 
 
 __all__ = ['get_dataset', 'get_dataloader']
 
 def get_dataset(cfg, mode):
     assert mode in ['train', 'val', 'test']
+    dataroot = os.environ['SLURM_TMPDIR'] + "/data/"
     if cfg.dataset == 'ATARI':
         mode = 'validation' if mode == 'val' else mode
-        return Atari(cfg.dataset_roots.ATARI, mode, gamelist=cfg.gamelist)
+        return Atari(dataroot + "ATARI", mode, gamelist=cfg.gamelist)
     elif cfg.dataset == 'OBJ3D_SMALL':
-        return Obj3D(cfg.dataset_roots.OBJ3D_SMALL, mode)
+        return Obj3D(dataroot + "OBJ3D_SMALL", mode)
     elif cfg.dataset == 'OBJ3D_LARGE':
-        return Obj3D(cfg.dataset_roots.OBJ3D_LARGE, mode)
+        return Obj3D(dataroot + "OBJ3D_LARGE", mode)
 
 def get_dataloader(cfg, mode):
     assert mode in ['train', 'val', 'test']
