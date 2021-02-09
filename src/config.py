@@ -28,6 +28,7 @@ cfg = CfgNode({
         'ATARI': '../data/ATARI',
         'OBJ3D_LARGE': '../data/OBJ3D_LARGE',
         'OBJ3D_SMALL': '../data/OBJ3D_SMALL',
+        'KITTI': '../data/KITTI',
     },
     
     # For Atari

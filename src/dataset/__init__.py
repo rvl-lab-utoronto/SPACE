@@ -1,5 +1,6 @@
 from .atari import Atari
 from .obj3d import Obj3D
+from .kitti import KITTI
 from torch.utils.data import DataLoader
 import os
 
@@ -16,6 +17,8 @@ def get_dataset(cfg, mode):
         return Obj3D(dataroot + "OBJ3D_SMALL", mode)
     elif cfg.dataset == 'OBJ3D_LARGE':
         return Obj3D(dataroot + "OBJ3D_LARGE", mode)
+    elif cfg.dataset == 'KITTI':
+        return KITTI(dataroot + "KITTI", mode)
 
 def get_dataloader(cfg, mode):
     assert mode in ['train', 'val', 'test']
