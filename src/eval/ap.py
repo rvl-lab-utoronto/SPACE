@@ -21,6 +21,8 @@ def compute_counts(boxes_pred, boxes_gt):
     overcount = 0
     undercount = 0
     for pred, gt in zip(boxes_pred, boxes_gt):
+        if len(gt) == 0:
+            continue
         M, N = len(pred), len(gt)
         error_rates.append(abs(M - N) / N)
         perfect += (M == N)

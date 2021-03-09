@@ -15,7 +15,7 @@ class SpaceVis:
     
     
     @torch.no_grad()
-    def train_vis(self, writer: SummaryWriter, log, global_step, mode, num_batch=10):
+    def train_vis(self, writer: SummaryWriter, log, global_step, mode, num_batch=15):
         """
         """
         B = num_batch

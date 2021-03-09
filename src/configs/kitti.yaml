@@ -78,6 +78,6 @@ arch:
   K: 5
   bg_sigma: 0.15
 
-  boundary_loss: true
+  boundary_loss: false
   bl_off_step: 100000
 

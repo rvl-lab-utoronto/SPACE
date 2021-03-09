@@ -26,7 +26,7 @@ class KITTI(Dataset):
             if 'png' in img_path or 'jpg' in img_path:
                 self.img_paths.append(img_path)
         
-        get_index = lambda x: int(os.path.basename(x).split('-')[0])
+        get_index = lambda x: int(os.path.basename(x).split('.')[0])
         self.img_paths.sort(key=get_index)
         
     @property
@@ -42,7 +42,7 @@ class KITTI(Dataset):
         # TODO: change?
         transform = transforms.Compose([
             transforms.ToPILImage(),
-            transforms.Resize(128),
+            transforms.CenterCrop(128),
             transforms.ToTensor(),
         ])
         img = transform(img)
